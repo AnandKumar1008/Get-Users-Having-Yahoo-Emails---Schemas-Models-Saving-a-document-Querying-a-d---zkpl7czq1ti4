@@ -1,8 +1,7 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-var users   =require("../models/user.js");
-
+const mongoose = require("mongoose");
+var users = require("../models/user.js");
 
 // const url = process.env.DATABASE_URL || "mongodb://localhost/users";
 // mongoose.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, () => {
@@ -15,14 +14,14 @@ app.use(express.json());
 //complet the Route that return the object id of all the user which email is of type @yahoo.com.
 //it should be Case insensitive
 
-app.get("/",async function(req,res){
+app.get("/", async function (req, res) {
+  // ids = [];
+  const user = await users.find({ email: /XYZ@yahoo.com/ });
+  const ids = user.map((user) => user._id) || [];
 
-    ids = [];
+  //Complete Your code here
 
-    //Complete Your code here
-
-    res.send(ids);
-
+  res.send(ids);
 });
 
 module.exports = app;
