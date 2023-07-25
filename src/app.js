@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.get("/", async function (req, res) {
   // ids = [];
-  const user = await users.find({ email: /XYZ@yahoo.com/ });
+  const user = await users.find({ email: /@yahoo\.com$/ });
   const ids = user.map((user) => user._id) || [];
 
   //Complete Your code here
